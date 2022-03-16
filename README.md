@@ -1,4 +1,4 @@
-# squire
+# enemy
 
 discord bot with adversarial integration
 
