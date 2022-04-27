@@ -1,0 +1,40 @@
+{
+  "name": "enemy",
+  "version": "0.0.1",
+  "description": "a formidable foe",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierogis/enemy.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "enemy"
+  ],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pierogis/enemy/issues"
+  },
+  "homepage": "https://github.com/pierogis/enemy#readme",
+  "files": [
+    "./bin/*",
+    "./lib/*"
+  ],
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.6.3"
+  },
+  "typings": "./lib/index.d.ts",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
