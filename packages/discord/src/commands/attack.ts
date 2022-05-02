@@ -1,18 +1,18 @@
 import { Message } from "discord.js";
 
-import { getUser, setUser, createUser } from "../db";
+import { getUser, setUser, createUser } from "../api";
 import { variables } from "../env";
 
 import { attack } from "../systems/combat";
 import { sendMessage } from "../helpers/message";
 
-export function attackCommand(message: Message) {
-  let attacker = getUser(message.author.id);
+export async function attackCommand(message: Message) {
+  let attacker = await getUser(message.author.id);
   if (!attacker) {
-    attacker = createUser({ id: message.author.id });
+    attacker = await createUser({ discordId: message.author.id });
   }
 
-  let attackee = getUser(variables.enemyId);
+  let attackee = await getUser(variables.enemyId);
 
   ({ attacker, attackee } = attack(attacker, attackee));
 
