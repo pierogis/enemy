@@ -11,7 +11,7 @@ export async function getUsers(
 	return users;
 }
 
-export async function getUser(params: Partial<Omit<User, 'isAdmin'>>) {
+export async function getUser(params: Partial<User>) {
 	const user = await prisma.user.findUnique({
 		where: params
 	});
@@ -19,7 +19,7 @@ export async function getUser(params: Partial<Omit<User, 'isAdmin'>>) {
 	return user;
 }
 
-export async function createUser(partial: Omit<User, 'id' | 'isAdmin'>) {
+export async function createUser(partial: Omit<User, 'id'>) {
 	const user = await prisma.user.create({ data: partial });
 
 	return user;

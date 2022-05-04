@@ -1,5 +1,4 @@
-import { User } from "./models/user";
-import { Inventory, Item } from "./models/item";
+import { User, Item } from "@pierogis/enemy-core";
 import { variables } from "./env";
 
 // const users: { [userId: string]: User } = {
@@ -42,7 +41,7 @@ export function getItem(id: number): Item {
   return items[id];
 }
 
-export async function getUserInventory(user: User): Promise<Inventory> {
+export async function getUserInventory(user: User): Promise<Item[]> {
   const response = await fetch(
     `${variables.apiBase}/inventories?userId=${user.id}`
   );
@@ -53,9 +52,9 @@ export async function getUserInventory(user: User): Promise<Inventory> {
 
 export async function setUserInventory(
   user: User,
-  inventory: Inventory
-): Promise<Inventory> {
-  const data = { items: inventory.items };
+  inventory: Item[]
+): Promise<Item[]> {
+  const data = { items: inventory };
 
   const response = await fetch(
     `${variables.apiBase}/inventories?userId=${user.id}`,

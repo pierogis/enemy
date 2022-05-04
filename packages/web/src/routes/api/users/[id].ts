@@ -1,8 +1,9 @@
 import { getUser } from '$lib/database/users';
 
-/** @type {import('./api/users/[id]').RequestHandler} */
-export async function get({ params }) {
-	const user = await getUser(params.id);
+import type { RequestHandler } from '.svelte-kit/types/src/routes/api/users/[id]';
+
+export const get: RequestHandler = async ({ params }) => {
+	const user = await getUser({ id: parseInt(params.id) });
 
 	if (user) {
 		return {
@@ -13,4 +14,4 @@ export async function get({ params }) {
 	return {
 		status: 404
 	};
-}
+};

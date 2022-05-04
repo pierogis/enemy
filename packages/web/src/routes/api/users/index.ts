@@ -1,8 +1,10 @@
 import { createUser } from '$lib/database/users';
+import type { User } from '@prisma/client';
 
-/** @type {import('./api/users/index').RequestHandler} */
-export async function post({ request }) {
-	const body = request.json();
+import type { RequestHandler } from '.svelte-kit/types/src/routes/api/users/index';
+
+export const post: RequestHandler = async ({ request }) => {
+	const body: Omit<User, 'id'> = await request.json();
 
 	const partial = {
 		discordId: body.discordId
@@ -19,4 +21,4 @@ export async function post({ request }) {
 	return {
 		status: 404
 	};
-}
+};
