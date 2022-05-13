@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id        Int    @id @default(autoincrement())
-  discordId Int
+  discordId Int    @unique
   inventory Deed[]
 }
 

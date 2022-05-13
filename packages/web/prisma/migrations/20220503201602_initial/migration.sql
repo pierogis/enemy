@@ -24,6 +24,9 @@ CREATE TABLE "Deed" (
     CONSTRAINT "Deed_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "User_discordId_unique" ON "User"("discordId");
+
 -- AddForeignKey
 ALTER TABLE "Deed" ADD CONSTRAINT "Deed_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
